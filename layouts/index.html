@@ -1,0 +1,72 @@
+{{ partial "header.html" . }}
+
+<div class="main">
+    <div class="hero-box">
+        <img class="hero-logo" src="/logo.jpg">
+        <div class="column">
+            <h1 class="hero">{{ .Params.hero.title }}</h1>
+            <p class="hero-text sec-text">
+                {{ .Params.hero.description }}
+            </p>
+        </div>
+    </div>
+
+    <div class="written">
+        {{ .Content }}
+    </div>
+</div>
+
+<style>
+    .written {
+        h1 {
+            margin-top: 3.6em;
+        }
+
+        h1:nth-child(1) {
+            margin-top: 2em;
+        }
+      
+        h2 {
+            margin-top: 1.8em;
+        }
+      
+        h3 {
+            margin-top: 1em;
+        }
+
+        p {
+            color: var(--middle-text);
+        }
+      
+        code {
+            background-color: var(--background2);
+            padding: 0.4em;
+            border-radius: 0.4em;
+            font-family: monospace;
+        }
+      
+        a {
+            color: var(--accent);
+            text-decoration: none;
+      
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+      }
+
+    @media screen and (max-width: 900px) {
+
+        .features .row {
+            padding: 0 0.5em !important;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .main {
+        max-width: 70rem;
+    }
+</style>
+
+{{ partial "footer.html" . }}

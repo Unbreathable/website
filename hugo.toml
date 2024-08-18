@@ -1,0 +1,34 @@
+baseURL = 'https://creator.liphium.com/'
+languageCode = 'en-us'
+title = 'Unbreathable'
+[menu]
+# The main menu
+[[menu.main]]
+name = "GitHub"
+url = "https://github.com/Unbreathable"
+weight = 2
+#[[menu.main]]
+#name = "Cooking"
+#url = "/cooking/"
+#weight = 3
+#[[menu.main]]
+#name = "Development"
+#url = "/blog/"
+#weight = 4
+[[menu.main]]
+name = "Liphium"
+url = "https://liphium.com"
+weight = 5
+# Menu for the footer
+[[menu.footer]]
+name = "Home"
+url = "/"
+weight = 1
+#[[menu.footer]]
+#name = "Privacy & Terms"
+#url = "/legal/terms/"
+#weight = 2
+#[[menu.footer]]
+#name = "Impressum"
+#url = "/legal/impressum/"
+#weight = 3
