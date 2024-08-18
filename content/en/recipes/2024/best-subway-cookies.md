@@ -13,7 +13,7 @@ ingredients:
   - name: "Butter (soft)"
     amount: "1 tsp"
   - name: "Sugar"
-    amount: "260g"
+    amount: "200g"
   - name: "Eggs"
     amount: "2"
   - name: "Milk (dark) chocolate"
