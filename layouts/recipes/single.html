@@ -1,0 +1,248 @@
+{{ partial "header.html" . }}
+{{ $currentPage := . }}
+
+<div class="row">
+    <div class="written">
+        <h1 class="hero-small no-pad">{{ .Title }}</h1>
+        <p class="sub">Published on <strong>{{ .Date.Format "January 2, 2006" }}</strong>
+            
+        <div class="small-hero-box">
+            <p class="normal-color no-pad">
+                <strong>Hint:</strong> As a measure to finally fix scrolling so much on mobile I've added a button in the bottom right 
+                that will also show you the ingredients for the recipe. I hope this helps with the usability of this site.
+            </p>
+        </div>
+        
+        </p>
+        {{ .Content }}
+    </div>
+    <div class="ingredient-box">
+        {{ partial "ingredients.html" . }}
+    </div>
+
+    <div class="bottom-sheet" id="bottomSheet">
+        <div class="bottom-sheet-content">
+            <button class="action-button action-button-relative" onclick="toggleBottomSheet()">
+                <span class="material-symbols" style="font-size: 30px;">close</span>
+            </button>
+            <div class="scrollable-content">
+                <div class="bottom-sheet-spacer"></div>
+                {{ partial "ingredients.html" . }}
+                <div class="bottom-sheet-spacer"></div>
+            </div>
+        </div>
+    </div>
+
+    <button class="action-button" onclick="toggleBottomSheet()">
+        <span class="material-symbols" style="font-size: 30px;">grocery</span>
+    </button>
+</div>
+
+<script lang="js">
+    function toggleBottomSheet() {
+        const bottomSheet = document.getElementById("bottomSheet");
+        const body = document.body;
+
+        bottomSheet.classList.toggle("active");
+        
+        if (bottomSheet.classList.contains("active")) {
+            document.body.style.top = `-${window.scrollY}px`;
+            document.body.style.position = 'fixed';
+        } else {
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+    }
+</script>
+
+<style>
+
+    .row {
+        max-width: 70em;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    .ingredient-box {
+        min-width: 13em;
+        margin-top: 1.7rem;
+        top: 2rem;
+        position: sticky;
+        background-color: var(--background2);
+        padding: 1.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.5rem;
+        border: var(--accent) 2px dashed;
+        max-height: calc(100vh - 7rem);
+        overflow-y: scroll;
+    }
+
+    .bottom-sheet {
+        display: none;
+    }
+
+    .action-button {
+        display: none;
+    }
+
+    .ingredient-content {
+        h3 {
+            line-height: normal;
+            margin-bottom: 0em;
+        }
+
+        h3:nth-child(1) {
+            margin-top: 0em;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 0.5em;
+        }
+
+        ul {
+            margin-top: 0.5em;
+            list-style-type: none;
+            padding: 0;
+            color: var(--text);
+            margin-bottom: 0em;
+        }
+
+        ul li:nth-child(2n) {
+            color: var(--middle-text);
+        }}
+
+    .written {
+        margin-top: 1em;
+        max-width: 50em;
+      
+        h1 {
+            margin-top: 3.2em;
+        }
+      
+        h2 {
+            margin-top: 1.8em;
+        }
+      
+        h3 {
+            margin-top: 1.2em;
+        }
+      
+        p {
+            color: var(--middle-text);
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        code {
+            background-color: var(--background2);
+            padding: 0.4em;
+            border-radius: 0.4em;
+            font-family: monospace;
+        }
+      
+        a {
+            color: var(--accent);
+            text-decoration: none;
+      
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+      }
+
+    .sub {
+        margin-top: 0.5em;
+    }
+
+    .normal-color {
+        color: var(--text) !important;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .ingredient-box {
+            display: none;
+        }
+
+        .action-button {
+            display: flex;
+            padding: 0;
+            margin: 0;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            padding: 10px;
+            margin: 1em;
+            border: none;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 500;
+            background-color: var(--background2);
+            border-radius: 1em;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .action-button-relative {
+            position: absolute;
+            background: var(--background);
+        }
+
+        .bottom-sheet {
+            display: flex;
+            position: fixed;
+            overflow-y: scroll;
+            bottom: -100%;  /* Start off-screen */
+            left: 0;
+            width: 100%;
+            height: 100%;  /* Fill the entire screen */
+            background-color:var(--background2);
+            transition: bottom 0.4s ease;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            overflow: hidden;  /* Hide scrollbars for the entire sheet */
+        }
+        
+        .bottom-sheet-content {
+            width: 100%;
+            height: 100%;  /* Make content take up full height */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                color: var(--text);
+            }
+
+            a:hover, a.active {
+                color: var(--accent);
+                text-decoration: underline;
+            }
+        }
+
+        .scrollable-content {
+            padding: 0em 2em;
+            overflow-y: scroll;
+        }
+        
+        .bottom-sheet-spacer {
+            height: 2em;
+        }
+
+        /* Bottom sheet visible */
+        .bottom-sheet.active {
+            bottom: 0;  /* Slide up to fill the screen */
+        }
+
+    }
+
+</style>
+{{ partial "footer.html" . }}

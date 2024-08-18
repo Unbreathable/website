@@ -1,0 +1,18 @@
+<div class="ingredient-content">
+    <h3>Ingredients</h3>
+    <ul>
+        {{ range .Params.Ingredients }}
+        <li>{{ .amount }} {{ .name }}</li>
+        {{ end }}
+    </ul>
+
+    {{ if .Params.Yield }}
+    <h3>Yield</h3>
+    <p>{{ .Params.Yield }}</p>
+    {{ end }}
+
+    {{ if .Params.Gear }}
+    <h3>Gear</h3>
+    <p>{{ .Params.Gear }}</p>
+    {{ end }}
+</div>
