@@ -11,7 +11,7 @@ ingredients:
   - name: "Salt"
     amount: "1 tsp (level)"
   - name: "Butter (soft)"
-    amount: "1 tsp"
+    amount: "250g"
   - name: "Sugar"
     amount: "200g"
   - name: "Eggs"
