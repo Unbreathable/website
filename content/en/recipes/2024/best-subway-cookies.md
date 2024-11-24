@@ -21,7 +21,7 @@ ingredients:
   - name: "White chocolate"
     amount: "75g"
   - name: "Dried raspberries (should roughly match the amount of chocolate, they are much lighter than you think)"
-    amount: "10g"
+    amount: "25g"
 yield: "Roughly 4 trays (when doing 12 per tray)."
 gear: "Not much needed, an oven and a metal tray should be enough."
 ---
