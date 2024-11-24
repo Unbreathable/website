@@ -1,6 +1,6 @@
 ---
 title: "Unbreathable"
-description: "A chat app with more fun (hopefully)."
+description: "A random developer with a big dream."
 hero:
   title: "Hi, I'm Unbreathable 👋"
   description: "I'm currently creating way too ambitious apps like Liphium and in my free time I also like to cook things sometimes. I mostly develop cross-platform apps using stuff like Flutter or the Web. Well one of those creations is what you see right now."
